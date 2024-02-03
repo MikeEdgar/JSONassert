@@ -14,10 +14,11 @@
 
 package org.skyscreamer.jsonassert.comparator;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.skyscreamer.jsonassert.JSONCompareResult;
+
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
 
 /**
  * Interface for comparison handler.

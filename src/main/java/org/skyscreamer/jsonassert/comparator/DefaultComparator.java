@@ -14,14 +14,15 @@
 
 package org.skyscreamer.jsonassert.comparator;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.allJSONObjects;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.allSimpleValues;
+
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.JSONCompareResult;
 
-import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.allJSONObjects;
-import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.allSimpleValues;
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
 
 /**
  * This class is the default json comparator implementation.

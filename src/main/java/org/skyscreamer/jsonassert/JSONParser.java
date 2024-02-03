@@ -14,10 +14,10 @@
 
 package org.skyscreamer.jsonassert;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONString;
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
+import com.github.openjson.JSONString;
 
 /**
  * Simple JSON parsing utility.
@@ -46,12 +46,7 @@ public class JSONParser {
             return new JSONArray(s);
         } else if (s.trim().startsWith("\"")
                    || s.trim().matches(NUMBER_REGEX)) {
-          return new JSONString() {
-            @Override
-            public String toJSONString() {
-              return s;
-            }
-          };
+          return (JSONString) () -> s;
         }
         throw new JSONException("Unparsable JSON string: " + s);
     }

@@ -1,13 +1,14 @@
 package org.skyscreamer.jsonassert;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-public class JSONArrayWithNullTest {
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
+
+class JSONArrayWithNullTest {
     @Test
-    public void testJSONArrayWithNullValue() throws JSONException {
+    void testJSONArrayWithNullValue() throws JSONException {
         JSONArray jsonArray1 = getJSONArray1();
         JSONArray jsonArray2 = getJSONArray2();
 
@@ -16,7 +17,7 @@ public class JSONArrayWithNullTest {
     }
 
     @Test
-    public void testJSONArrayWithNullValueAndJsonObject() throws JSONException {
+    void testJSONArrayWithNullValueAndJsonObject() throws JSONException {
         JSONArray jsonArray1 = getJSONArray1();
         JSONObject jsonObject1 = new JSONObject();
         jsonObject1.put("hey", "value");

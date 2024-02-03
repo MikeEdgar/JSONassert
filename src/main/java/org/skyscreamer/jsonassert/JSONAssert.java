@@ -14,10 +14,11 @@
 
 package org.skyscreamer.jsonassert;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.skyscreamer.jsonassert.comparator.JSONComparator;
+
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
 
 /**
  * <p>A set of assertion methods useful for writing tests methods that return JSON.</p>
@@ -65,7 +66,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals(expectedStr, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONObject provided matches the expected string.  If it isn't it throws an
      * {@link AssertionError}.
@@ -84,9 +85,9 @@ public class JSONAssert {
     /**
      * Asserts that the JSONObject provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @see #assertEquals(String, JSONObject, boolean)
-     * 
+     *
      * @param expectedStr Expected JSON string
      * @param actual JSONObject to compare
      * @param strict Enables strict checking
@@ -96,13 +97,13 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals(expectedStr, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONObject provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @see #assertEquals(String, JSONObject, boolean)
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expectedStr Expected JSON string
      * @param actual JSONObject to compare
@@ -127,7 +128,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals("", expectedStr, actual, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONObject provided matches the expected string.  If it isn't it throws an
      * {@link AssertionError}.
@@ -152,9 +153,9 @@ public class JSONAssert {
     /**
      * Asserts that the JSONObject provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @see #assertEquals(String, JSONObject, JSONCompareMode)
-     * 
+     *
      * @param expectedStr Expected JSON string
      * @param actual JSONObject to compare
      * @param compareMode Specifies which comparison mode to use
@@ -164,13 +165,13 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals("", expectedStr, actual, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONObject provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @see #assertEquals(String, JSONObject, JSONCompareMode)
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expectedStr Expected JSON string
      * @param actual JSONObject to compare
@@ -201,7 +202,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals(expectedStr, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONArray provided matches the expected string.  If it isn't it throws an
      * {@link AssertionError}.
@@ -220,7 +221,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expectedStr Expected JSON string
      * @param actual JSONArray to compare
      * @param strict Enables strict checking
@@ -230,11 +231,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals(expectedStr, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expectedStr Expected JSON string
      * @param actual JSONArray to compare
@@ -259,7 +260,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals("", expectedStr, actual, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONArray provided matches the expected string.  If it isn't it throws an
      * {@link AssertionError}.
@@ -284,7 +285,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expectedStr Expected JSON string
      * @param actual JSONArray to compare
      * @param compareMode Specifies which comparison mode to use
@@ -300,11 +301,11 @@ public class JSONAssert {
             throw new AssertionError("Expecting a JSON object, but passing in a JSON array");
         }
     }
-    
+
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expectedStr Expected JSON string
      * @param actual JSONArray to compare
@@ -335,7 +336,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals(expectedStr, actualStr, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONArray provided matches the expected string.  If it isn't it throws an
      * {@link AssertionError}.
@@ -354,7 +355,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expectedStr Expected JSON string
      * @param actualStr String to compare
      * @param strict Enables strict checking
@@ -364,11 +365,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals(expectedStr, actualStr, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expectedStr Expected JSON string
      * @param actualStr String to compare
@@ -393,7 +394,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals("", expectedStr, actualStr, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONArray provided matches the expected string.  If it isn't it throws an
      * {@link AssertionError}.
@@ -421,7 +422,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expectedStr Expected JSON string
      * @param actualStr String to compare
      * @param compareMode Specifies which comparison mode to use
@@ -431,11 +432,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals("", expectedStr, actualStr, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONArray provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expectedStr Expected JSON string
      * @param actualStr String to compare
@@ -462,9 +463,9 @@ public class JSONAssert {
     public static void assertEquals(String expectedStr, String actualStr, JSONComparator comparator)
             throws JSONException {
         assertEquals("", expectedStr, actualStr, comparator);
-        
+
     }
-    
+
     /**
      * Asserts that the json string provided matches the expected string.  If it isn't it throws an
      * {@link AssertionError}.
@@ -486,7 +487,7 @@ public class JSONAssert {
     /**
      * Asserts that the json string provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expectedStr Expected JSON string
      * @param actualStr String to compare
      * @param comparator Comparator
@@ -496,11 +497,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals("", expectedStr, actualStr, comparator);
     }
-    
+
     /**
      * Asserts that the json string provided does not match the expected string.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expectedStr Expected JSON string
      * @param actualStr String to compare
@@ -528,7 +529,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals("", expected, actual, comparator);
     }
-   
+
     /**
      * Asserts that the JSONObject provided matches the expected JSONObject.  If it isn't it throws an
      * {@link AssertionError}.
@@ -578,7 +579,7 @@ public class JSONAssert {
             throw new AssertionError(getCombinedMessage(message, result.getMessage()));
         }
     }
-    
+
     /**
      * Asserts that the JSONObject provided matches the expected JSONObject.  If it isn't it throws an
      * {@link AssertionError}.
@@ -592,7 +593,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals(expected, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONObject provided matches the expected JSONObject.  If it isn't it throws an
      * {@link AssertionError}.
@@ -611,7 +612,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONObject provided does not match the expected JSONObject.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expected Expected JSONObject
      * @param actual JSONObject to compare
      * @param strict Enables strict checking
@@ -621,11 +622,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals(expected, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONObject provided does not match the expected JSONObject.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expected Expected JSONObject
      * @param actual JSONObject to compare
@@ -650,7 +651,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals("", expected, actual, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONObject provided matches the expected JSONObject.  If it isn't it throws an
      * {@link AssertionError}.
@@ -672,7 +673,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONObject provided does not match the expected JSONObject.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expected Expected JSONObject
      * @param actual JSONObject to compare
      * @param compareMode Specifies which comparison mode to use
@@ -682,11 +683,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals("", expected, actual, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONObject provided does not match the expected JSONObject.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expected Expected JSONObject
      * @param actual JSONObject to compare
@@ -714,7 +715,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals("", expected, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONArray provided matches the expected JSONArray.  If it isn't it throws an
      * {@link AssertionError}.
@@ -733,7 +734,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONArray provided does not match the expected JSONArray.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expected Expected JSONArray
      * @param actual JSONArray to compare
      * @param strict Enables strict checking
@@ -743,11 +744,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals(expected, actual, strict ? JSONCompareMode.STRICT : JSONCompareMode.LENIENT);
     }
-    
+
     /**
      * Asserts that the JSONArray provided does not match the expected JSONArray.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expected Expected JSONArray
      * @param actual JSONArray to compare
@@ -772,7 +773,7 @@ public class JSONAssert {
             throws JSONException {
         assertEquals("", expected, actual, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONArray provided matches the expected JSONArray.  If it isn't it throws an
      * {@link AssertionError}.
@@ -794,7 +795,7 @@ public class JSONAssert {
     /**
      * Asserts that the JSONArray provided does not match the expected JSONArray.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param expected Expected JSONArray
      * @param actual JSONArray to compare
      * @param compareMode Specifies which comparison mode to use
@@ -804,11 +805,11 @@ public class JSONAssert {
             throws JSONException {
         assertNotEquals("", expected, actual, compareMode);
     }
-    
+
     /**
      * Asserts that the JSONArray provided does not match the expected JSONArray.  If it is it throws an
      * {@link AssertionError}.
-     * 
+     *
      * @param message Error message to be displayed in case of assertion failure
      * @param expected Expected JSONArray
      * @param actual JSONArray to compare
@@ -822,10 +823,10 @@ public class JSONAssert {
             throw new AssertionError(getCombinedMessage(message, result.getMessage()));
         }
     }
-    
+
     private static String getCombinedMessage(String message1, String message2) {
         String combinedMessage = "";
-        
+
         if(message1 == null || "".equals(message1)) {
             combinedMessage = message2;
         } else {

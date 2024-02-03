@@ -14,12 +14,13 @@
 
 package org.skyscreamer.jsonassert;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.json.JSONString;
 import org.skyscreamer.jsonassert.comparator.DefaultComparator;
 import org.skyscreamer.jsonassert.comparator.JSONComparator;
+
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
+import com.github.openjson.JSONString;
 
 /**
  * Provides API to compare two JSON entities.  This is the backend to {@link JSONAssert}, but it can

@@ -14,22 +14,24 @@
 
 package org.skyscreamer.jsonassert.comparator;
 
-import junit.framework.Assert;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+import org.junit.jupiter.api.Test;
+
 /**
  * Test JSONCompareUtil
  *
  * @author Carter Page <carter@skyscreamer.org>
  */
-public class JSONCompareUtilTest {
+class JSONCompareUtilTest {
     @Test
-    public void testGetCardinalityMap() {
+    void testGetCardinalityMap() {
         final int NUM_A = 76;
         final int NUM_B = 3;
         final int NUM_C = 0;
@@ -45,10 +47,10 @@ public class JSONCompareUtilTest {
         Collections.shuffle(listToTest);
 
         Map<String, Integer> cardinalityMap = JSONCompareUtil.getCardinalityMap(listToTest);
-        Assert.assertEquals(NUM_A, cardinalityMap.get("A").intValue());
-        Assert.assertEquals(NUM_B, cardinalityMap.get("B").intValue());
-        Assert.assertNull(cardinalityMap.get("C"));
-        Assert.assertEquals(NUM_D, cardinalityMap.get("D").intValue());
-        Assert.assertEquals(NUM_E, cardinalityMap.get("E").intValue());
+        assertEquals(NUM_A, cardinalityMap.get("A").intValue());
+        assertEquals(NUM_B, cardinalityMap.get("B").intValue());
+        assertNull(cardinalityMap.get("C"));
+        assertEquals(NUM_D, cardinalityMap.get("D").intValue());
+        assertEquals(NUM_E, cardinalityMap.get("E").intValue());
     }
 }

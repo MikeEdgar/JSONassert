@@ -14,16 +14,17 @@
 
 package org.skyscreamer.jsonassert;
 
-import org.json.JSONException;
-import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.skyscreamer.jsonassert.JSONCompare.compareJSON;
+
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.comparator.CustomComparator;
 import org.skyscreamer.jsonassert.comparator.JSONComparator;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.skyscreamer.jsonassert.JSONCompare.compareJSON;
+import com.github.openjson.JSONException;
 
-public class JSONCustomComparatorTest {
+class JSONCustomComparatorTest {
 
     String actual = "{\"first\":\"actual\", \"second\":1}";
     String expected = "{\"first\":\"expected\", \"second\":1}";
@@ -128,42 +129,42 @@ public class JSONCustomComparatorTest {
     };
 
     @Test
-    public void whenPathMatchesInCustomizationThenCallCustomMatcher() throws JSONException {
+    void whenPathMatchesInCustomizationThenCallCustomMatcher() throws JSONException {
         JSONComparator jsonCmp = new CustomComparator(JSONCompareMode.STRICT, new Customization("first", comparator));
         JSONCompareResult result = compareJSON(expected, actual, jsonCmp);
-        assertTrue(result.getMessage(),  result.passed());
+        assertTrue(result.passed(), result.getMessage());
         assertEquals(1, comparatorCallCount);
     }
 
     @Test
-    public void whenDeepPathMatchesCallCustomMatcher() throws JSONException {
+    void whenDeepPathMatchesCallCustomMatcher() throws JSONException {
         JSONComparator jsonCmp = new CustomComparator(JSONCompareMode.STRICT, new Customization("outer.inner.value", comparator));
         JSONCompareResult result = compareJSON(deepExpected, deepActual, jsonCmp);
-        assertTrue(result.getMessage(), result.passed());
+        assertTrue(result.passed(), result.getMessage());
         assertEquals(1, comparatorCallCount);
     }
 
     @Test
-    public void whenSimpleWildcardPathMatchesCallCustomMatcher() throws JSONException {
+    void whenSimpleWildcardPathMatchesCallCustomMatcher() throws JSONException {
         JSONComparator jsonCmp = new CustomComparator(JSONCompareMode.STRICT, new Customization("foo.*.baz", comparator));
         JSONCompareResult result = compareJSON(simpleWildcardExpected, simpleWildcardActual, jsonCmp);
-        assertTrue(result.getMessage(), result.passed());
+        assertTrue(result.passed(), result.getMessage());
         assertEquals(2, comparatorCallCount);
     }
 
     @Test
-    public void whenDeepWildcardPathMatchesCallCustomMatcher() throws JSONException {
+    void whenDeepWildcardPathMatchesCallCustomMatcher() throws JSONException {
         JSONComparator jsonCmp = new CustomComparator(JSONCompareMode.STRICT, new Customization("root.**.baz", comparator));
         JSONCompareResult result = compareJSON(deepWildcardExpected, deepWildcardActual, jsonCmp);
-        assertTrue(result.getMessage(), result.passed());
+        assertTrue(result.passed(), result.getMessage());
         assertEquals(3, comparatorCallCount);
     }
 
     @Test
-    public void whenRootDeepWildcardPathMatchesCallCustomMatcher() throws JSONException {
+    void whenRootDeepWildcardPathMatchesCallCustomMatcher() throws JSONException {
         JSONComparator jsonCmp = new CustomComparator(JSONCompareMode.STRICT, new Customization("**.baz", comparator));
         JSONCompareResult result = compareJSON(rootDeepWildcardExpected, rootDeepWildcardActual, jsonCmp);
-        assertTrue(result.getMessage(), result.passed());
+        assertTrue(result.passed(), result.getMessage());
         assertEquals(4, comparatorCallCount);
     }
 }

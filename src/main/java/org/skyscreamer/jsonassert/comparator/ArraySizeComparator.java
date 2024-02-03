@@ -16,42 +16,43 @@ package org.skyscreamer.jsonassert.comparator;
 
 import java.text.MessageFormat;
 
-import org.json.JSONArray;
-import org.json.JSONException;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.JSONCompareResult;
 
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+
 /**
  * A JSONAssert array size comparator.
- * 
+ *
  * <p>Some typical usage idioms are listed below.</p>
- * 
+ *
  * <p>Assuming JSON to be verified is held in String variable ARRAY_OF_JSONOBJECTS and contains:</p>
- * 
+ *
  * <code>{a:[7, 8, 9]}</code>
- * 
+ *
  * <p>then:</p>
- * 
+ *
  * <p>To verify that array 'a' contains 3 elements:</p>
- * 
+ *
  * <code>
  * JSONAssert.assertEquals("{a:[3]}", ARRAY_OF_JSONOBJECTS, new ArraySizeComparator(JSONCompareMode.LENIENT));
  * </code>
- * 
+ *
  * <p>To verify that array 'a' contains between 2 and 6 elements:</p>
- * 
+ *
  * <code>
  * JSONAssert.assertEquals("{a:[2,6]}", ARRAY_OF_JSONOBJECTS, new ArraySizeComparator(JSONCompareMode.LENIENT));
  * </code>
- * 
+ *
  * @author Duncan Mackinder
- * 
+ *
  */
 public class ArraySizeComparator extends DefaultComparator {
 
 	/**
 	 * Create new ArraySizeComparator.
-	 * 
+	 *
 	 * @param mode
 	 *            comparison mode, has no impact on ArraySizeComparator but is
 	 *            used by instance of superclass DefaultComparator to control

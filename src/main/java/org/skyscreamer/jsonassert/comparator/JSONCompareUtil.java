@@ -18,21 +18,19 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
 
 /**
  * Utility class that contains Json manipulation methods.
  */
 public final class JSONCompareUtil {
-    private static Integer INTEGER_ONE = new Integer(1);
+    private static final Integer INTEGER_ONE = Integer.valueOf(1);
 
     private JSONCompareUtil() {
     }
@@ -204,12 +202,7 @@ public final class JSONCompareUtil {
      * @return the set of keys
      */
     public static Set<String> getKeys(JSONObject jsonObject) {
-        Set<String> keys = new TreeSet<String>();
-        Iterator<?> iter = jsonObject.keys();
-        while (iter.hasNext()) {
-            keys.add((String) iter.next());
-        }
-        return keys;
+        return jsonObject.keySet();
     }
 
     public static String qualify(String prefix, String key) {
@@ -228,13 +221,14 @@ public final class JSONCompareUtil {
      * @return the cardinality map
      */
     public static <T> Map<T, Integer> getCardinalityMap(final Collection<T> coll) {
-        Map count = new HashMap<T, Integer>();
+        Map<T, Integer> count = new HashMap<>();
+
         for (T item : coll) {
-            Integer c = (Integer) (count.get(item));
+            Integer c = count.get(item);
             if (c == null) {
                 count.put(item, INTEGER_ONE);
             } else {
-                count.put(item, new Integer(c.intValue() + 1));
+                count.put(item, Integer.valueOf(c + 1));
             }
         }
         return count;

@@ -14,14 +14,15 @@
 
 package org.skyscreamer.jsonassert.comparator;
 
-import org.json.JSONException;
+import java.util.Arrays;
+import java.util.Collection;
+
 import org.skyscreamer.jsonassert.Customization;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 import org.skyscreamer.jsonassert.JSONCompareResult;
 import org.skyscreamer.jsonassert.ValueMatcherException;
 
-import java.util.Arrays;
-import java.util.Collection;
+import com.github.openjson.JSONException;
 
 public class CustomComparator extends DefaultComparator {
 

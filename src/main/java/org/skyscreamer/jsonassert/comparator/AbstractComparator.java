@@ -14,14 +14,23 @@
 
 package org.skyscreamer.jsonassert.comparator;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.arrayOfJsonObjectToMap;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.findUniqueKey;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.formatUniqueKey;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.getKeys;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.isUsableAsUniqueKey;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.jsonArrayToList;
+import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.qualify;
+
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
 import org.skyscreamer.jsonassert.JSONCompareResult;
 
-import java.util.*;
-
-import static org.skyscreamer.jsonassert.comparator.JSONCompareUtil.*;
+import com.github.openjson.JSONArray;
+import com.github.openjson.JSONException;
+import com.github.openjson.JSONObject;
 
 /**
  * This class provides a skeletal implementation of the {@link JSONComparator}

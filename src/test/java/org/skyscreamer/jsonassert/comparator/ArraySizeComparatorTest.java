@@ -14,25 +14,26 @@
 
 package org.skyscreamer.jsonassert.comparator;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.text.MessageFormat;
 
-import org.json.JSONException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.skyscreamer.jsonassert.JSONAssert;
 import org.skyscreamer.jsonassert.JSONCompareMode;
 
+import com.github.openjson.JSONException;
+
 /**
  * Unit tests for ArraySizeComparator
- * 
+ *
  * @author Duncan Mackinder
  *
  */
-public class ArraySizeComparatorTest {
+class ArraySizeComparatorTest {
 	private static final String twoElementArray = "{a:[b,c]}";
-	
+
 	private void doTest(String expectedJSON, String actualJSON) throws JSONException
 	{
 		JSONAssert.assertEquals(expectedJSON, actualJSON, new ArraySizeComparator(JSONCompareMode.STRICT_ORDER));
@@ -44,84 +45,84 @@ public class ArraySizeComparatorTest {
 		}
 		catch (AssertionError e) {
 			String failureMessage = MessageFormat.format("Exception message ''{0}'', does not match expected pattern ''{1}''", e.getMessage(), expectedMessagePattern);
-			assertTrue(failureMessage, e.getMessage().matches(expectedMessagePattern));
+			assertTrue(e.getMessage().matches(expectedMessagePattern), failureMessage);
 			return;
 		}
 		fail("AssertionError not thrown");
 	}
 
 	@Test
-	public void succeedsWhenExactSizeExpected() throws JSONException {
+	void succeedsWhenExactSizeExpected() throws JSONException {
 		doTest("{a:[2]}", twoElementArray);
 	}
 
 	@Test
-	public void succeedsWhenSizeWithinExpectedRange() throws JSONException {
+	void succeedsWhenSizeWithinExpectedRange() throws JSONException {
 		doTest("{a:[1,3]}", twoElementArray);
 	}
 
 	@Test
-	public void succeedsWhenSizeIsMinimumOfExpectedRange() throws JSONException {
+	void succeedsWhenSizeIsMinimumOfExpectedRange() throws JSONException {
 		doTest("{a:[2,4]}", twoElementArray);
 	}
 
 	@Test
-	public void succeedsWhenSizeIsMaximumOfExpectedRange() throws JSONException {
+	void succeedsWhenSizeIsMaximumOfExpectedRange() throws JSONException {
 		doTest("{a:[1,2]}", twoElementArray);
 	}
 
 	@Test
-	public void failsWhenExpectedArrayTooShort() throws JSONException {
+	void failsWhenExpectedArrayTooShort() throws JSONException {
 		doFailingMatchTest("{a:[]}", twoElementArray, "a\\[\\]: invalid expectation: expected array should contain either 1 or 2 elements but contains 0 elements");
 	}
 
 	@Test
-	public void failsWhenExpectedArrayTooLong() throws JSONException {
+	void failsWhenExpectedArrayTooLong() throws JSONException {
 		doFailingMatchTest("{a:[1,2,3]}", twoElementArray, "a\\[\\]: invalid expectation: expected array should contain either 1 or 2 elements but contains 3 elements");
 	}
 
 	@Test
-	public void failsWhenExpectedNotAllSimpleTypes() throws JSONException {
+	void failsWhenExpectedNotAllSimpleTypes() throws JSONException {
 		doFailingMatchTest("{a:[{y:1},2]}", twoElementArray, "a\\[\\]: invalid expectation: minimum expected array size '\\{\"y\":1\\}' not a number");
 	}
 
 	@Test
-	public void failsWhenExpectedMinimumTooSmall() throws JSONException {
+	void failsWhenExpectedMinimumTooSmall() throws JSONException {
 		doFailingMatchTest("{a:[-1,6]}", twoElementArray, "a\\[\\]: invalid expectation: minimum expected array size '-1' negative");
 	}
 
 	@Test
-	public void failsWhenExpectedMaximumTooSmall() throws JSONException {
+	void failsWhenExpectedMaximumTooSmall() throws JSONException {
 		doFailingMatchTest("{a:[8,6]}", twoElementArray, "a\\[\\]: invalid expectation: maximum expected array size '6' less than minimum expected array size '8'");
 	}
 
 	@Test
-	public void failsWhenExpectedArraySizeNotANumber() throws JSONException {
+	void failsWhenExpectedArraySizeNotANumber() throws JSONException {
 		doFailingMatchTest("{a:[X]}", twoElementArray, "a\\[\\]: invalid expectation: expected array size 'X' not a number");
 	}
 
 	@Test
-	public void failsWhenFirstExpectedArrayElementNotANumber() throws JSONException {
+	void failsWhenFirstExpectedArrayElementNotANumber() throws JSONException {
 		doFailingMatchTest("{a:[MIN,6]}", twoElementArray, "a\\[\\]: invalid expectation: minimum expected array size 'MIN' not a number");
 	}
 
 	@Test
-	public void failsWhenSecondExpectedArrayElementNotANumber() throws JSONException {
+	void failsWhenSecondExpectedArrayElementNotANumber() throws JSONException {
 		doFailingMatchTest("{a:[8,MAX]}", twoElementArray, "a\\[\\]: invalid expectation: maximum expected array size 'MAX' not a number");
 	}
 
 	@Test
-	public void failsWhenActualArrayTooShort() throws JSONException {
+	void failsWhenActualArrayTooShort() throws JSONException {
 		doFailingMatchTest("{a:[3]}", twoElementArray, "a\\[\\]\\s*Expected:\\s*array size of 3 elements\\s*got:\\s*2 elements\\s*");
 	}
 
 	@Test
-	public void failsWhenActualArrayLongerThanExpectedLength() throws JSONException {
+	void failsWhenActualArrayLongerThanExpectedLength() throws JSONException {
 		doFailingMatchTest("{a:[1]}", twoElementArray, "a\\[\\]\\s*Expected:\\s*array size of 1 elements\\s*got:\\s*2 elements\\s*");
 	}
 
 	@Test
-	public void failsWhenActualArrayLongerThanMaxOfExpectedRange() throws JSONException {
+	void failsWhenActualArrayLongerThanMaxOfExpectedRange() throws JSONException {
 		doFailingMatchTest("{a:[0,1]}", twoElementArray, "a\\[\\]\\s*Expected:\\s*array size of 0 to 1 elements\\s*got:\\s*2 elements\\s*");
 	}
 
@@ -130,12 +131,12 @@ public class ArraySizeComparatorTest {
 	 */
 
 	@Test
-	public void succeedsWhenActualArrayContainsExactly3Elements() throws JSONException {
+	void succeedsWhenActualArrayContainsExactly3Elements() throws JSONException {
 		JSONAssert.assertEquals("{a:[3]}", "{a:[7, 8, 9]}", new ArraySizeComparator(JSONCompareMode.LENIENT));
 	}
 
 	@Test
-	public void succeedsWhenActualArrayContainsBetween2And6Elements() throws JSONException {
+	void succeedsWhenActualArrayContainsBetween2And6Elements() throws JSONException {
 		JSONAssert.assertEquals("{a:[2,6]}", "{a:[7, 8, 9]}", new ArraySizeComparator(JSONCompareMode.LENIENT));
 	}
 
